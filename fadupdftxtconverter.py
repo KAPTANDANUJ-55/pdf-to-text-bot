@@ -63,7 +63,7 @@ def pdf_handler(message):
         bot.reply_to(message, f"❌ Oops! Error aaya: {e}")
 
 def set_webhook():
-    webhook_url = f"https://YOUR_RENDER_DOMAIN/{TOKEN}"
+  webhook_url = f"https://danuj-pdf-bot.onrender.com/{TOKEN}"
     success = bot.set_webhook(webhook_url)
     if success:
         print(f"Webhook set to {webhook_url}")
@@ -74,3 +74,4 @@ if __name__ == '__main__':
     set_webhook()
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
+

@@ -64,7 +64,7 @@ def pdf_handler(message):
 
 def set_webhook():
   webhook_url = f"https://danuj-pdf-bot.onrender.com/{TOKEN}"
-    success = bot.set_webhook(webhook_url)
+  success = bot.set_webhook(webhook_url)
     if success:
         print(f"Webhook set to {webhook_url}")
     else:
@@ -74,4 +74,5 @@ if __name__ == '__main__':
     set_webhook()
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
+
 

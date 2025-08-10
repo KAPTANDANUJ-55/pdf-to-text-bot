@@ -1,1 +1,33 @@
 # pdf-to-text-bot
+
+
+# DANUJ PDF TO TXT Telegram Bot 🤖
+
+THIS BOT CONVERT THE PDF FILE TO TXT HELL YEAH AND IT IS REALLY INTERESTING BOT SO DON'T FORGET TO CHECK OUT THIS BOT
+
+---
+
+## Features
+
+- ACCEPTS THE PDF FILES
+- EXTRACT EVERY PAGES OF THE PDF FILE
+- IF IT FAILED TO SCAN(OBVIOUSLY YOU WILL HAVE MADE A MISTAKE) SO IT GIVES YOU AN ERROR MESSAGE
+- CONVERT EXTRACTED PDF PAGES TO .txt FILE AND SEND IT TO YOU YEAH IT TAKES TIME FOR LARGER PDFS(APPROX 8 MINUTES)
+- SIMPLE AND FAST.
+
+---
+
+## Requirements
+
+- `pdfplumber` library
+- `pyTelegramBotAPI` library (Telegram bot API wrapper)
+
+---
+
+## Installation
+
+1. CLONE AND DOWNLOD THIS REPO FAST IF YOU ALSO WANT TO MAKE
+
+```bash
+git clone <https://github.com/KAPTANDANUJ-55/pdf-to-text-bot>
+cd <pdf-to-text-bot>

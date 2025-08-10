@@ -1,18 +1,31 @@
-import pdfplumber
 import os
 import tempfile
+import pdfplumber
+from flask import Flask, request
 import telebot
 
 TOKEN = "7339710265:AAFkeQdtkOA5B9N4RV6E3JDr-mvgIRfx0zA"
 bot = telebot.TeleBot(TOKEN)
 
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return "🤖 DANUJ PDF BOT is running... Danuj style!"
+
+@app.route(f'/{TOKEN}', methods=['POST'])
+def telegram_webhook():
+    json_str = request.get_data().decode('utf-8')
+    update = telebot.types.Update.de_json(json_str)
+    bot.process_new_updates([update])
+    return '', 200
+
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     bot.reply_to(message, "🤖 YO! A VERY WARM WELCOME TO DANUJSIR BOT. PLS SIR/MADAM FORWARD THE PDF AND SEE THE MAGIC!")
 
-@bot.message_handler(content_types='document')
+@bot.message_handler(content_types=['document'])
 def pdf_handler(message):
-    # Check karo ki file PDF hai ya nahi
     if not message.document.file_name.endswith('.pdf'):
         bot.reply_to(message, "GIVE ME PDFFFFFF!")
         return
@@ -49,6 +62,15 @@ def pdf_handler(message):
     except Exception as e:
         bot.reply_to(message, f"❌ Oops! Error aaya: {e}")
 
-print("🤖 DANUJ PDF BOT is running on Telegram...")
-bot.infinity_polling()
+def set_webhook():
+    webhook_url = f"https://YOUR_RENDER_DOMAIN/{TOKEN}"
+    success = bot.set_webhook(webhook_url)
+    if success:
+        print(f"Webhook set to {webhook_url}")
+    else:
+        print("Webhook setup failed")
 
+if __name__ == '__main__':
+    set_webhook()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)

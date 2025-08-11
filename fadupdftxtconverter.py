@@ -4,7 +4,7 @@ import pdfplumber
 from flask import Flask, request
 import telebot
 
-TOKEN = "7339710265:AAFkeQdtkOA5B9N4RV6E3JDr-mvgIRfx0zA"
+TOKEN = "YOUR_TOKEN"
 bot = telebot.TeleBot(TOKEN)
 
 app = Flask(__name__)
@@ -74,6 +74,7 @@ if __name__ == '__main__':
     set_webhook()
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
+
 
 
 
